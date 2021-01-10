@@ -1,1 +1,2 @@
 network_bridge: "your-virtual-switch-name"
+vmname: "ubuntu"

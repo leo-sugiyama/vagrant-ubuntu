@@ -12,5 +12,9 @@ Vagrant.configure("2") do |config|
   config.vm.network     "public_network", bridge: extconf["network_bridge"]
 
   config.vm.provider "hyperv" do |hv|
+    hv.vmname       = extconf['vmname']
+    hv.cpus         = 2
+    hv.memory       = "4096"
+    hv.maxmemory    = "8192"
   end
 end
