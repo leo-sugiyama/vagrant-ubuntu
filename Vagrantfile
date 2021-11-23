@@ -42,4 +42,10 @@ Vagrant.configure("2") do |config|
     # multicast DNS で名前解決できるようにする
     sudo apt -y install avahi-daemon
   SHELL
+
+  config.vm.provision "docker", type: "shell", inline: <<-SHELL
+    # docker, docker-compose のインストール
+    /vagrant/provision/docker-ubuntu-20.04.sh
+    /vagrant/provision/docker-compose-ubuntu-20.04.sh
+  SHELL
 end
