@@ -35,4 +35,11 @@ Vagrant.configure("2") do |config|
     # 日本語マニュアルのインストール
     sudo apt install manpages-ja manpages-ja-dev --yes
   SHELL
+
+  config.vm.provision "mdns", type: "shell", inline: <<-SHELL
+    # パッケージ情報更新
+    sudo apt update
+    # multicast DNS で名前解決できるようにする
+    sudo apt -y install avahi-daemon
+  SHELL
 end
