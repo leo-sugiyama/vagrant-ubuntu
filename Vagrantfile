@@ -36,6 +36,13 @@ Vagrant.configure("2") do |config|
     sudo apt install manpages-ja manpages-ja-dev --yes
   SHELL
 
+  config.vm.provision "netplan", type: "shell", inline: <<-SHELL
+    # 固定(静的) IP 設定
+    sudo cp /vagrant/provision/10-netcfg.yaml /etc/netplan
+    sudo ochmod 644 /etc/netplan/10-netcfg.yaml
+    sudo netplan apply
+  SHELL
+
   config.vm.provision "mdns", type: "shell", inline: <<-SHELL
     # パッケージ情報更新
     sudo apt update
