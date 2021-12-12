@@ -4,6 +4,7 @@
 ################################################################################
 # docker インストール
 ################################################################################
+sudo apt update
 # apt が HTTPS 経由でパッケージを使用できるようにするいくつかの必要条件パッケージをインストール
 sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
 # 公式 Docker リポジトリの GPG キーをシステムに追加
