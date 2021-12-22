@@ -34,6 +34,8 @@ Vagrant.configure("2") do |config|
     sudo timedatectl set-timezone Asia/Tokyo
     # 日本語マニュアルのインストール
     sudo apt install manpages-ja manpages-ja-dev --yes
+    # bash 補完の有効化
+    sudo apt install bash-completion --yes
   SHELL
 
   config.vm.provision "netplan", type: "shell", inline: <<-SHELL
