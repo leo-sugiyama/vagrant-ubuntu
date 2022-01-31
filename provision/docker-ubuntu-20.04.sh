@@ -28,7 +28,7 @@ sudo usermod -aG docker vagrant
 # グループメンバーシップを適用するために再ログイン
 sudo su - vagrant
 # ユーザーがdockerグループに追加されたことを確認
-id -nG
+id -nG | grep docker
 # Dockerに関するシステム全体の情報を表示
 docker info
 # Docker Hubからイメージにアクセスしダウンロードできるかどうかを確認
