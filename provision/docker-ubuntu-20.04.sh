@@ -14,7 +14,7 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 # 追加されたリポジトリから Docker パッケージでパッケージデータベースを更新
 sudo apt update
 # デフォルトのUbuntuリポジトリではなく、Dockerリポジトリからインストールしようとしていることを確認
-apt-cache policy docker-ce
+apt-cache policy docker-ce | grep https://download.docker.com/linux/ubuntu
 # Docker をインストール
 sudo apt install docker-ce -y
 # 実行されていることを確認
