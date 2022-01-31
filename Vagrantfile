@@ -1,5 +1,9 @@
 # vim: set fileencoding=utf-8 filetype=ruby expandtab tabstop=2 softtabstop=2 shiftwidth=2 :
 
+unless Vagrant.has_plugin?("vagrant-reload")
+  raise "vagrant-reload plugin is not installed!"
+end
+
 if File.exist?("config.yml")
   require "yaml"
   extconf = YAML::load(File.open("config.yml"))
@@ -37,6 +41,8 @@ Vagrant.configure("2") do |config|
     # bash 補完の有効化
     sudo apt install bash-completion --yes
   SHELL
+
+  config.vm.provision :reload
 
   config.vm.provision "netplan", type: "shell", inline: <<-SHELL
     # 固定(静的) IP 設定
