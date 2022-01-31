@@ -12,7 +12,5 @@ DOWNLOAD_URL=$(curl -s https://api.github.com/repos/docker/compose/releases/late
 sudo curl -L $DOWNLOAD_URL -o /usr/local/bin/docker-compose
 # 実行権限を付与
 sudo chmod +x /usr/local/bin/docker-compose
-# コマンドライン補完のインストール
-sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose --create-dirs -o /etc/bash_completion.d/docker-compose
 # 実行できることを確認
 docker-compose --version
