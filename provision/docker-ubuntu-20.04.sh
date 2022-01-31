@@ -25,14 +25,12 @@ sudo systemctl is-active docker
 ################################################################################
 # docker コマンドを実行するたびに sudo を入力しないようにするために、ユーザーを docker グループに追加
 sudo usermod -aG docker vagrant
-# グループメンバーシップを適用するために再ログイン
-sudo su - vagrant
 # ユーザーがdockerグループに追加されたことを確認
-id -nG | grep docker
+groups vagrant | grep docker
 # Dockerに関するシステム全体の情報を表示
-docker info
+sudo docker info
 # Docker Hubからイメージにアクセスしダウンロードできるかどうかを確認
-docker run hello-world
+sudo docker run hello-world
 # 使い終わったコンテナとイメージを削除
-docker container prune -f
-docker image prune -a -f
+sudo docker container prune -f
+sudo docker image prune -a -f
