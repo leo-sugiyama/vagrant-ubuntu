@@ -18,7 +18,7 @@ apt-cache policy docker-ce
 # Docker をインストール
 sudo apt install docker-ce -y
 # 実行されていることを確認
-sudo systemctl status docker
+sudo systemctl is-active docker
 
 ################################################################################
 # docker 設定
