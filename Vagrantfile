@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "netplan", type: "shell", inline: <<-SHELL
     # 固定(静的) IP 設定
     sudo cp /vagrant/provision/10-netcfg.yaml /etc/netplan
-    sudo ochmod 644 /etc/netplan/10-netcfg.yaml
+    sudo chmod 644 /etc/netplan/10-netcfg.yaml
     sudo netplan apply
   SHELL
 
