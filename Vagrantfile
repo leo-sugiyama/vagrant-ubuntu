@@ -1,5 +1,9 @@
 # vim: set fileencoding=utf-8 filetype=ruby expandtab tabstop=2 softtabstop=2 shiftwidth=2 :
 
+unless Vagrant.has_plugin?("vagrant-reload")
+  raise "vagrant-reload plugin is not installed!"
+end
+
 if File.exist?("config.yml")
   require "yaml"
   extconf = YAML::load(File.open("config.yml"))
@@ -34,12 +38,16 @@ Vagrant.configure("2") do |config|
     sudo timedatectl set-timezone Asia/Tokyo
     # 日本語マニュアルのインストール
     sudo apt install manpages-ja manpages-ja-dev --yes
+    # bash 補完の有効化
+    sudo apt install bash-completion --yes
   SHELL
+
+  config.vm.provision :reload
 
   config.vm.provision "netplan", type: "shell", inline: <<-SHELL
     # 固定(静的) IP 設定
     sudo cp /vagrant/provision/10-netcfg.yaml /etc/netplan
-    sudo ochmod 644 /etc/netplan/10-netcfg.yaml
+    sudo chmod 644 /etc/netplan/10-netcfg.yaml
     sudo netplan apply
   SHELL
 

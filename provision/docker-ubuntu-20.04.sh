@@ -14,25 +14,23 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 # 追加されたリポジトリから Docker パッケージでパッケージデータベースを更新
 sudo apt update
 # デフォルトのUbuntuリポジトリではなく、Dockerリポジトリからインストールしようとしていることを確認
-apt-cache policy docker-ce
+apt-cache policy docker-ce | grep https://download.docker.com/linux/ubuntu
 # Docker をインストール
 sudo apt install docker-ce -y
 # 実行されていることを確認
-sudo systemctl status docker
+sudo systemctl is-active docker
 
 ################################################################################
 # docker 設定
 ################################################################################
 # docker コマンドを実行するたびに sudo を入力しないようにするために、ユーザーを docker グループに追加
 sudo usermod -aG docker vagrant
-# グループメンバーシップを適用するために再ログイン
-sudo su - vagrant
 # ユーザーがdockerグループに追加されたことを確認
-id -nG
+groups vagrant | grep docker
 # Dockerに関するシステム全体の情報を表示
-docker info
+sudo docker info
 # Docker Hubからイメージにアクセスしダウンロードできるかどうかを確認
-docker run hello-world
+sudo docker run hello-world
 # 使い終わったコンテナとイメージを削除
-docker container prune -f
-docker image prune -a -f
+sudo docker container prune -f
+sudo docker image prune -a -f
